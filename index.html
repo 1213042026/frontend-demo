@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>index</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/echarts.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <style type="text/css">
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      font-size: 62.5%;
+    }
+
+    .whole {
+      font-size: 1.6rem;
+      width: 100%;
+      height: 100%;
+      background: -webkit-gradient(linear, 0 0, 0 bottom, from(#6F5C6F), to(#B4847E));
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+    }
+
+    .navbar-default {
+      padding-top: 5rem;
+      width: 20%;
+      background-color: transparent;
+      border-color: transparent;
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      flex: 1;
+    }
+
+    .nav>li>a.menu-indent-fs {
+      padding-left: 3rem;
+    }
+
+    .nav>li>a.menu-indent-sn {
+      padding-left: 4.5rem;
+    }
+
+    .nav>li>a.menu-indent-tr {
+      padding-left: 6rem;
+    }
+
+    .whole .content {
+      -webkit-box-flex: 4;
+      -webkit-flex: 4;
+      flex: 4;
+      padding: 2rem;
+    }
+
+    .nav>li>a {
+      color: white;
+    }
+
+    .nav>li>a:hover {
+      color: white;
+      background-color: #76504D;
+    }
+
+    .nav>li>a:focus {
+      color: white;
+      background-color: #76504D;
+    }
+
+    </style>
+
+    <script type="text/javascript">
+
+      $(function() {
+        var option = {
+            title: {
+                text: '比特比市场'
+            },
+            tooltip : {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
+                }
+            },
+            legend: {
+                data:['买入','卖出']
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    boundaryGap : false,
+                    data : ['JAN','FEB','MAR','APR','MAY','JUN','JUL']
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value'
+                }
+            ],
+            series : [
+                {
+                    name:'买入',
+                    type:'line',
+                    stack: '总量',
+                    areaStyle: {normal: {}},
+                    data:[120, 132, 101, 134, 90, 230, 210]
+                },
+                {
+                    name:'卖出',
+                    type:'line',
+                    stack: '总量',
+                    areaStyle: {normal: {}},
+                    data:[220, 182, 191, 234, 290, 330, 310]
+                }
+            ]
+        };
+
+        var myChart = echarts.init(document.getElementById('main'));
+        myChart.setOption(option);
+      })
+    </script>
+  </head>
+  <body>
+    <div class="whole">
+      <nav class="navbar navbar-default">
+        <ul class="nav nav-list">
+          <!--1-->
+          <li>
+            <a class="nav-header menu-indent-fs" data-toggle="collapse">
+              首页
+            </a>
+          </li>
+
+          <li>
+            <a href="#transaction-menu" class="nav-header menu-indent-fs" data-toggle="collapse">
+              交易中心
+            </a>
+            <ul id="transaction-menu" class="nav nav-list collapse">
+                <li>
+                  <!--2-->
+                  <a href="#transaction-submenu" class="nav-header menu-indent-sn" data-toggle="collapse">XXC交易</a>
+                  <ul id="transaction-submenu" class="nav nav-list collapse">
+                    <!--3-->
+                    <li><a href="#" class="menu-indent-tr">买入/卖出</a></li>
+                    <li><a href="#" class="menu-indent-tr">行情深度</a></li>
+                    <li><a href="#" class="menu-indent-tr">交易管理</a></li>
+                  </ul>
+                </li>
+
+                <li><a href="#" class="menu-indent-sn">BTC交易</a></li>
+                <li><a href="#" class="menu-indent-sn">LTC交易</a></li>
+                <li><a href="#" class="menu-indent-sn">全站交易历史</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="#fund-menu" class="nav-header menu-indent-fs" data-toggle="collapse">
+              资金管理
+            </a>
+            <ul id="fund-menu" class="nav nav-list collapse">
+                <li>
+                  <a class="nav-header menu-indent-sn" data-toggle="collapse">充值</a>
+                </li>
+
+                <li><a href="#" class="menu-indent-sn">提现</a></li>
+                <li><a href="#" class="menu-indent-sn">个人账户</a></li>
+                <li><a href="#" class="menu-indent-sn">账户信息</a></li>
+                <li><a href="#" class="menu-indent-sn">修改密码</a></li>
+                <li><a href="#" class="menu-indent-sn">银行卡管理</a></li>
+                <li><a href="#" class="menu-indent-sn">系统消息</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="content">
+        <div id="main" style="margin-top: 200px;width: 600px;height:400px;"></div>
+      </div>
+    </div>
+  </body>
+</html>
